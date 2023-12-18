@@ -12,28 +12,20 @@ textarea {
   padding: 10px;
 }
 
-.description {
-  white-space: pre-wrap;
-}
-
-.time-block {
-  border-radius: 15px;
-}
-
-.row {
-  border-top: 1px solid white;
-}
-
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
-
-.past {
-  background-color: #d3d3d3;
+.text-center {
+  background-color: darkblue;
   color: white;
 }
+
+/* .current-card {
+
+} */
+
+.card {
+  background-color: darkblue;
+  color: white;
+}
+
 
 .present {
   background-color: #ff6961;
@@ -53,7 +45,7 @@ textarea {
   color: white;
 }
 
-.saveBtn i:hover {
+/* .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
-}
+} */
