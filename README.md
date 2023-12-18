@@ -21,7 +21,7 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ## Weather Information for a City
 
--    Current
+-   Current
     - Date
     - Icon Representation of Weather Conditions
     - Temperature
