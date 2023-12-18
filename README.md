@@ -14,18 +14,25 @@
 </p>
 <br/>
 
-Welcome to the Weather Dashboard Project! This web application allows users to check the current weather conditions and forecast for a specific location. The dashboard provides real-time weather information, ensuring you stay informed about the atmospheric conditions.
+Welcome to the Weather Dashboard Project! This web application allows users to check the current weather conditions and forecast for a specific location. The dashboard provides real-time weather information, ensuring you stay informed about the atmospheric conditions when you plan a trip.
 
 ## Getting Started
 To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-dash]. Enter the desired location in the search bar and press the search button to retrieve the weather data.
 
-## Weather Information
+## Weather Information for a City
 
--    Current Temperature
--    Humidity
--    Wind Speed
--    UV Index
--    5-Day Forecast
+-    Current:
+    - Date
+    - Icon Representation of Weather Conditions
+    - Temperature
+    - Wind Speed
+    - Humidity
+-   5-Day Forecast
+    - Date
+    - Icon Representation of Weather Conditions
+    - Temperature
+    - Wind Speed
+    - Humidity
 
 ## Search History
 
