@@ -4,71 +4,74 @@
 
 $(document).ready(  function () {
 
-  // Get the current hour and day using Day.js
-  var currentHour = dayjs().hour();
-  var today = dayjs();
-
-  // $('.day2-date').text(today.format('[Today is] h:mm:ss a')); // TODO comment once done coloring the current hour
+  // Get the current day using Day.js
+  let today = dayjs();
+  let weatherForecast;
+  let locationCity;
+  let latCity;
+  let lonCity;
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. 
    // Here save user input to local storage using the id in the containing time-block.
-   $('.saveBtn').on('click', function () { // add event listener
-    // for the button clicked, get the id of the time-block
-    var blockId = $(this).closest('.time-block').attr('id'); // what was clicked!
+   $('#searchButton').on('click', function () { // add event listener
 
-    // get user input
-    var userInput = $(this).siblings('.description').val(); // what was input
+    locationCity = $('#locationInput').val();
+    // console.log(locationCity) // TODO comment when tested
 
-    // save input to local storage
-    localStorage.setItem(blockId, userInput); // save the input here
+    // configure recipe API method and parameters
+    let query = locationCity;
+    let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
+    let limit = 'limit=1';
+    const uri = 'http://api.openweathermap.org/geo/1.0/direct?q=' + query + '&' + AUTH + '&' + limit;
+
+    // fetch for location latitude and longitude
+    fetchData(uri).then(data => {
+      weatherForecast = data;
+      latCity = weatherForecast[0].lat;
+      lonCity = weatherForecast[0].lon;
+      displayWeatherCity(latCity,lonCity);
+
+      const cityLocation = {
+        location: locationCity,
+        lat: weatherForecast[0].lat,
+        lon: weatherForecast[0].lon
+      };
+
+      // Store data in local storage
+      localStorage.setItem('cityLocation', JSON.stringify(cityLocation));
+
+      // created button into html and add city searched
+      var cityCard = `
+        <li class="list-group-item">
+          <button class="btn btn-secondary col cityButton" type="button">"${locationCity}"</button>
+        </li>
+      `;
+
+      // append city search to search history
+      $("#searchHistory").append(cityCard);
+
+      // Handle clicks on city buttons
+      $("#searchHistory").on("click", ".cityButton", function () {
+      const cityName = $(this).text();
+      // Handle the click action for the city button
+      displayWeatherCity(cityName);
+      console.log(cityName)
+      });
+    });
   });
   
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour.
-  // Loop through each time block
-  for (let hour = 9; hour < 18; hour++) {
-    // time block to check
-    let blockId = '#hour-' + hour;
+  function displayWeatherCity(lat,lon) {
 
-    // Extract the hour from the time-block id
-    var blockHour = parseInt(hour);
-    
-    // Compare blockHour with currentHour to determine past, present, or future
-    if (blockHour < currentHour) { 
-      // block is in the past
-      $(blockId).removeClass('present future').addClass('past');
-
-    } else if (blockHour === currentHour) {
-      // block is in the present
-      $(blockId).removeClass('past future').addClass('present');
-
-    } else {
-      // block is in the future
-      $(blockId).removeClass('past present').addClass('future');
-
-    }
+    cityDisplayandDate = `${locationCity} (` + today.format('D/MM/YYYY') + ')';
+    $('.current-card h5').text(cityDisplayandDate);
   }
-  
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements.
-  // use each to iterate over all elements with class 'time-block'
-  $('.time-block').each(function () {
-    // retrieve 'id' for each time block
-    var blockId = $(this).attr('id');
-    // retrieve items stored in localstirage for each block
-    var storedInput = localStorage.getItem(blockId);
 
-    // if there is stem stored in block
-    if (storedInput) {
-      // then set the value stored in block to textarea
-      $(this).find('.description').val(storedInput);
-    }
-  });
-
-  // TODO: Add code to display the current date in the header of the page.
-  // display the day and date in scheduler
-  $('.day1-date').text(today.format('[Today is] dddd, MMM D, YYYY'));
-
+  // here we pass the url we want to call from API and await until fetch responds
+  async function fetchData(url) {
+    const fetcher = await fetch(url)
+    const data = await fetcher.json();
+    return data;
+  }
 });
