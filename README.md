@@ -148,9 +148,7 @@ You'll need to parse the JSON data returned by the API and extract the relevant 
 
 That's it! You can now use the OpenWeather API to retrieve the city geolocation, the current and 5-day weather forecasts for any location of your choice in your Weather Dashboard project.
 
-```
 Make sure to replace `'YOUR_API_KEY'` in the code examples with your actual OpenWeather API key. Users of your Weather Dashboard project will need to follow these steps to set up their own API keys and make API requests to retrieve weather data.
-```
 
 ## State Flow Diagram
 For a visual representation of the sequence of actions involved in the weather dashboard, refer to the [State Flow Diagram][state-flow] provided in the project documentation.
