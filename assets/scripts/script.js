@@ -33,6 +33,7 @@ $(document).ready(  function () {
       lonCity = weatherForecast[0].lon;
       displayWeatherCity(latCity,lonCity);
 
+
       const cityLocation = {
         location: locationCity,
         lat: weatherForecast[0].lat,
@@ -64,8 +65,16 @@ $(document).ready(  function () {
   
   function displayWeatherCity(lat,lon) {
 
+    // display name of location, date and weather icon
     cityDisplayandDate = `${locationCity} (` + today.format('D/MM/YYYY') + ')';
     $('.current-card h5').text(cityDisplayandDate);
+
+    // display current temperature, wind speed and humidity
+    // display 5-day forecast for location
+  }
+
+  function displaySearchHistory(){
+
   }
 
   // here we pass the url we want to call from API and await until fetch responds
