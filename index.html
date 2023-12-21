@@ -36,7 +36,8 @@
             <!-- Weather Information Column on the Right -->
             <div class="col-md-9">
                 <!-- Current Weather Information -->
-                <div class="current-card mb-3 border">
+                <div class="current-card mb-3 border" id="currentWeather" style="display: none;">
+                    <!-- Current weather content goes here -->
                     <h2 class="text-center">Current Weather</h2>
                     
                     <div class="card-body">
@@ -47,8 +48,9 @@
                     </div>
                 </div>
                 <!-- 5-Day Forecast -->
-                <h2 class="text-center">5-Day Forecast</h2>
-                <div class="row">
+                <h2 class="text-center" id="fiveDayForecast" style="display: none;">5-Day Forecast</h2>
+
+                <div class="row" id="fiveDayForecastCard" style="display: none;">
                     <!-- Day 1 -->
                     <div class="col">
                         <div class="card">
