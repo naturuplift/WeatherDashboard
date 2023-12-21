@@ -1,18 +1,35 @@
+/* Set body font setting */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
-textarea {
+/* textarea {
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+} */
+
+/* set the title banner dashboard and forecast card color */
+.text-center {
+  background-color: darkblue;
+  color: white;
 }
 
-.text-center {
+.card-header {
+  font-size: 36px;
+}
+
+/* Set the width to 100% to match search button width */
+.list-group.searchHistory .cityButton {
+  width: 100%;
+}
+
+/* set the 5-day forecast card color */
+.card {
   background-color: darkblue;
   color: white;
 }
@@ -21,13 +38,7 @@ textarea {
 
 } */
 
-.card {
-  background-color: darkblue;
-  color: white;
-}
-
-
-.present {
+/* .present {
   background-color: #ff6961;
   color: white;
 }
@@ -43,7 +54,7 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
-}
+} */
 
 /* .saveBtn i:hover {
   font-size: 20px;

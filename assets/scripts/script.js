@@ -22,31 +22,34 @@ function weatherDashboard(City) {
   // Call geaolocation to find city lat, lon cordinates
   cityGeocodingAPI(City)
     .then(([lat, lon]) => {
-      
+      console.log(City, lat, lon) // TODO comment when tested
+      // Call function to display city current forecast
       currentWeather(City, lat, lon);
+      // Call function to display city 5-day forecast
     })
     .catch(error => {
       console.error("Error calling cityGeocodingAPI:", error)
     });
-  // console.log(geoReturn[0], geoReturn[1]) // TODO comment when tested
-
-  // Call function to display city current forecast
-  
-  // Call function to display city 5-day forecast
 }
 
 // display current weather on dashboard
+// show City, Date, Weather-Icon
+// show Temperature, Wind-Speed and Humidity
 function currentWeather(City, lat,lon) {
   // Get the current day using Day.js
   let today = dayjs();
+  // split address at comma
+  const parts = City.split(",");
+  // extract city from string
+  const extractedString = parts[0];
   // display name of location, date and weather icon
-  cityDisplayandDate = `${City} (` + today.format('D/MM/YYYY') + ')';
+  cityDisplayandDate = `${extractedString} (` + today.format('D/MM/YYYY') + ')';
   $('.current-card h5').text(cityDisplayandDate);
   // display current temperature, wind speed and humidity
   // display 5-day forecast for location
 }
 
-// find city latitude and longitude from city,state code,country code
+// find city temperature
 function cityGeocodingAPI(cityGeo) {
   // configure recipe API method and parameters
   let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
@@ -58,9 +61,49 @@ function cityGeocodingAPI(cityGeo) {
       .then(data => {
         const latCity = data[0].lat;
         const lonCity = data[0].lon;
-        resolve([latCity, lonCity]);
+        resolve([latCity, lonCity]); //return latitude and longitude for city
       })
-      .catch(error => {
+      .catch(error => { // catch error
+        reject('Error fetching Geocoding:',error); // reject Promise if catch error
+    });
+  });
+}
+
+// find city latitude and longitude from city,state code,country code
+function currentWeatherForecast(cityGeo) {
+  // configure recipe API method and parameters
+  let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
+  let limit = 'limit=1';
+  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
+  // return a fetch promise that resolves with city latitude and longitude
+  return new Promise((resolve, reject) => {
+    fetchData(apiUrl)
+      .then(data => {
+        const latCity = data[0].lat;
+        const lonCity = data[0].lon;
+        resolve([latCity, lonCity]); //return latitude and longitude for city
+      })
+      .catch(error => { // catch error
+        reject('Error fetching Geocoding:',error); // reject Promise if catch error
+    });
+  });
+}
+
+// find city latitude and longitude from city,state code,country code
+function fiveDayWeatherForecast(cityGeo) {
+  // configure recipe API method and parameters
+  let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
+  let limit = 'limit=1';
+  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
+  // return a fetch promise that resolves with city latitude and longitude
+  return new Promise((resolve, reject) => {
+    fetchData(apiUrl)
+      .then(data => {
+        const latCity = data[0].lat;
+        const lonCity = data[0].lon;
+        resolve([latCity, lonCity]); //return latitude and longitude for city
+      })
+      .catch(error => { // catch error
         reject('Error fetching Geocoding:',error); // reject Promise if catch error
     });
   });
@@ -75,28 +118,35 @@ async function fetchData(url) {
 
 // Function to check if a city is already in history
 function isCityInHistory(checkCity) {
+  // split address at comma
   const parts = checkCity.split(",");
-  const extractedString = parts[0]; // extract city from string
+  // extract city from string
+  const extractedString = parts[0];
   const historyItems = $('#searchHistory li');
   for (let i = 0; i < historyItems.length; i++) {
-      const historyItemButton = historyItems.eq(i).find('.cityButton');
-      const historyItemText = historyItemButton.text();
-      if (historyItemText === extractedString) {
-          return true; // City is already in history
-      }
+    const historyItemButton = historyItems.eq(i).find('.cityButton');
+    const historyItemText = historyItemButton.text();
+    // return true so city is not added to search history
+    if (historyItemText === extractedString) {
+      // City is already in history
+      return true;
+    }
   }
-  return false; // City is not in history
+  // City is not in history
+  return false;
 }
 
 // show city on search history as a click button
 function updateSearchHistory(updateCity) {
+  // split address at comma
   const parts = updateCity.split(",");
-  const extractedString = parts[0]; // extract city from string
+  // extract city from string
+  const extractedString = parts[0];
   // created button into html and add city searched
   const cityCard = `
-  <li class="list-group-item">
-    <button class="btn btn-secondary btn-block cityButton" data-location="${updateCity}">${extractedString}</button>
-  </li>
+    <li class="list-group-item">
+      <button class="btn btn-secondary btn-block cityButton" data-location="${updateCity}">${extractedString}</button>
+    </li>
   `;
   // append city search to search history
   $("#searchHistory").append(cityCard);
@@ -105,6 +155,6 @@ function updateSearchHistory(updateCity) {
   const cityName = $(this).data("location");
   // Handle the click action for the city button
   weatherDashboard(cityName);
-  console.log(cityName) // TODO comment when tested
+  console.log("City selected from search history:", cityName) // TODO comment when tested
   });
 }

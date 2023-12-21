@@ -10,118 +10,118 @@
 </head>
 
 <body>
-
-  <div class="container mt-5">
-    <h1 class="text-center">Weather Dashboard</h1>
-    <div class="row">
-        <!-- Search Column on the Left -->
-        <div class="col-md-3">
-            <h2>Search for City</h2>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter Location" id="locationInput">
+    <!-- container for dashboard -->
+    <div class="container mt-5">
+        <h1 class="text-center">Weather Dashboard</h1>
+        <div class="row">
+            <!-- Search Column on the Left -->
+            <div class="col-md-3">
+                <h2>Search for City</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter Location" id="locationInput">
+                    
+                </div>
+                <div class="input-group mb-3">
+                    <button class="btn btn-primary col" type="button" id="searchButton">Search</button>
+                </div>
+                <!-- Spacer line divider -->
+                <hr>
+                <!-- City search history -->
+                <h2>Search History</h2>
+                <ul id="searchHistory" class="list-group searchHistory">
+                    <!-- Display search history here -->
+                </ul>
                 
             </div>
-            <div class="input-group mb-3">
-              <button class="btn btn-primary col" type="button" id="searchButton">Search</button>
-            </div>
-            <hr>
-
-            <h2>Search History</h2>
-            <ul id="searchHistory" class="list-group searchHistory">
-                <!-- Display search history here -->
-            </ul>
-            
-        </div>
-        <!-- Weather Information Column on the Right -->
-        <div class="col-md-9">
-            <!-- Current Weather Information -->
-            <div class="current-card mb-3 border">
-                <div class="card-header">
-                    Current Weather
+            <!-- Weather Information Column on the Right -->
+            <div class="col-md-9">
+                <!-- Current Weather Information -->
+                <div class="current-card mb-3 border">
+                    <h2 class="text-center">Current Weather</h2>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">City Name (Date) Weather-icon</h5>
+                        <p class="card-text">Temp: 0°C</p>
+                        <p class="card-text">Wind: 0 m/s</p>
+                        <p class="card-text">Humidity: 0%</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">City Name (Date) Weather-icon</h5>
-                    <p class="card-text">Temp: 0°C</p>
-                    <p class="card-text">Wind: 0 m/s</p>
-                    <p class="card-text">Humidity: 0%</p>
-                </div>
-            </div>
-            <!-- 5-Day Forecast -->
-            <h2 class="text-center">5-Day Forecast</h2>
-            <div class="row">
-                <!-- Day 1 -->
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Day 1</h5>
-                            <p class="card-text">Weather-icon</p>
-                            <p class="card-text">Temp: 0°C</p>
-                            <p class="card-text">Wind: 0 m/s</p>
-                            <p class="card-text">Humidity: 0%</p>
+                <!-- 5-Day Forecast -->
+                <h2 class="text-center">5-Day Forecast</h2>
+                <div class="row">
+                    <!-- Day 1 -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 1</h5>
+                                <p class="card-text">Weather-icon</p>
+                                <p class="card-text">Temp: 0°C</p>
+                                <p class="card-text">Wind: 0 m/s</p>
+                                <p class="card-text">Humidity: 0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Day 2 -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 2</h5>
+                                <p class="card-text">Weather-icon</p>
+                                <p class="card-text">Temp: 0°C</p>
+                                <p class="card-text">Wind: 0 m/s</p>
+                                <p class="card-text">Humidity: 0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Day 3 -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 3</h5>
+                                <p class="card-text">Weather-icon</p>
+                                <p class="card-text">Temp: 0°C</p>
+                                <p class="card-text">Wind: 0 m/s</p>
+                                <p class="card-text">Humidity: 0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Day 4 -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 4</h5>
+                                <p class="card-text">Weather-icon</p>
+                                <p class="card-text">Temp: 0°C</p>
+                                <p class="card-text">Wind: 0 m/s</p>
+                                <p class="card-text">Humidity: 0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Day 5 -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 5</h5>
+                                <p class="card-text">Weather-icon</p>
+                                <p class="card-text">Temp: 0°C</p>
+                                <p class="card-text">Wind: 0 m/s</p>
+                                <p class="card-text">Humidity: 0%</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Day 2 -->
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Day 2</h5>
-                            <p class="card-text">Weather-icon</p>
-                            <p class="card-text">Temp: 0°C</p>
-                            <p class="card-text">Wind: 0 m/s</p>
-                            <p class="card-text">Humidity: 0%</p>
-                        </div>
-                    </div>
+                
                 </div>
-                <!-- Day 3 -->
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Day 3</h5>
-                            <p class="card-text">Weather-icon</p>
-                            <p class="card-text">Temp: 0°C</p>
-                            <p class="card-text">Wind: 0 m/s</p>
-                            <p class="card-text">Humidity: 0%</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Day 4 -->
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Day 4</h5>
-                            <p class="card-text">Weather-icon</p>
-                            <p class="card-text">Temp: 0°C</p>
-                            <p class="card-text">Wind: 0 m/s</p>
-                            <p class="card-text">Humidity: 0%</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Day 5 -->
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Day 5</h5>
-                            <p class="card-text">Weather-icon</p>
-                            <p class="card-text">Temp: 0°C</p>
-                            <p class="card-text">Wind: 0 m/s</p>
-                            <p class="card-text">Humidity: 0%</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             </div>
         </div>
     </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-  crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="./assets/scripts/script.js"></script>
+    <!-- calls scripts after loading HTML and CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./assets/scripts/script.js"></script>
     
 </body>
 </html>
