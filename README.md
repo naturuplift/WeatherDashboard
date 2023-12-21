@@ -112,9 +112,6 @@ fetch(apiUrl)
     // Handle the current weather data here
     console.log(data);
   })
-  .catch(error => {
-    console.error('Error fetching current weather:', error);
-  });
   ```
 
 c. 5-Day Weather Forecast
@@ -137,10 +134,6 @@ fetch(apiUrl)
     // Handle the 5-day weather forecast data here
     console.log(data);
   })
-  .catch(error => {
-    console.error('Error fetching 5-day weather forecast:', error);
-  });
-
 ```
 ### 4. Handling the API Response
 
