@@ -5,15 +5,34 @@ let locationCity;
 
 // Add a listener for click event search for a city
 $('#searchButton').on('click', function () {
+
   // save value for city entered to variable
   locationCity = $('#locationInput').val();
   // console.log(locationCity) // TODO comment when tested
-  // Check if city entered already in history
-  if (!isCityInHistory(locationCity)) {
-    // Call function to add city to search history
-    updateSearchHistory(locationCity);
-  }
-  weatherDashboard(locationCity);  
+
+  if (locationCity === '') {
+
+    // The locationCity is empty
+    alert('Location is empty. Please enter a city, state code, country code.');
+
+} else {
+  
+    // Check if city entered already in history
+    if (!isCityInHistory(locationCity)) {
+
+      // Call function to add city to search history
+      updateSearchHistory(locationCity);
+    }
+
+    // call weather dashboard to display weather forecast
+    weatherDashboard(locationCity);
+
+    // After the first search show below
+    $('#currentWeather').show(); // Show the current weather container
+    $('#fiveDayForecast').show(); // Show the 5-day forecast container
+    $('#fiveDayForecastCard').show(); // Show the 5-day forecast cards
+    
+}
 });
 
 // function to update seach history, call weather API methods
