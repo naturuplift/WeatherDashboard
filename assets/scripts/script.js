@@ -3,10 +3,10 @@ let currentForecast;
 let futureForecast;
 
 
-// Add a listener for click event search for a city
+// Add a listener for click event search for a location
 $('#searchButton').on('click', function () {
 
-  // save value for city entered to variable
+  // save value for location entered to variable
   let locationCity = $('#locationInput').val();
   // console.log(locationCity) // TODO comment when tested
 
@@ -19,10 +19,10 @@ $('#searchButton').on('click', function () {
   // if entered a location run this code
   } else {
   
-    // Check if city entered already in history
+    // Check if location entered already in history
     if (!isCityInHistory(locationCity)) {
 
-      // Call function to add city to search history
+      // Call function to add location to search history
       updateSearchHistory(locationCity);
     }
 
@@ -46,11 +46,13 @@ $('#searchButton').on('click', function () {
 // Function to check if a city is already in history
 function isCityInHistory(checkCity) {
 
-  // split address at comma
+  // split location at comma
   const parts = checkCity.split(",");
 
   // extract city from string
   const extractedString = parts[0];
+
+  // set reference for history items from html city buttom list
   const historyItems = $('#searchHistory li');
 
   // run loop over the search history to find if location match
@@ -109,18 +111,19 @@ function updateSearchHistory(updateCity) {
 
 // function to update seach history, call weather API methods
 // and call functions to display current and 5-day forecast
-function weatherDashboard(City) {
+function weatherDashboard(city) {
 
   // Call geaolocation to find city lat, lon cordinates
-  cityGeocodingAPI(City)
+  cityGeocodingAPI(city)
   .then(([lat, lon]) => {
 
     // check API lat, lon output for the city
-    console.log(City, lat, lon) // TODO comment when tested
+    console.log(city, lat, lon) // TODO comment when tested
 
     // Call function to display city current forecast
-    currentWeather(City, lat, lon);
+    currentAndForecastWeather(city, lat, lon);
     // Call function to display city 5-day forecast
+    // display 5-day forecast for location
 
   })
   // catch error for Geo API call
@@ -133,15 +136,43 @@ function weatherDashboard(City) {
 }
 
 
-// display current weather on dashboard
-// show City, Date, Weather-Icon
-// show Temperature, Wind-Speed and Humidity
-function currentWeather(City, lat,lon) {
+// display current and forecast weather on dashboard
+// show City, Date, Weather-Icon, Temperature, Wind-Speed and Humidity in current weather
+// show Date Weather-Icon, Temperature, Wind-Speed and Humidity in forecast weather
+function currentAndForecastWeather(city, lat,lon) {
 
+  // Call currentAndForecastWeatherAPI to current and forecast weather
+  currentAndForecastWeatherAPI(lat,lon)
+  .then(([lat, lon]) => {
+
+    // check API lat, lon output for the city
+    console.log(city, lat, lon) // TODO comment when tested
+
+    // Call function to display city current forecast
+    viewCurrentWeather(city);
+    // Call function to display city 5-day forecast
+    // display 5-day forecast for location
+
+  })
+  // catch error for Geo API call
+  .catch(error => {
+
+    // console message for API call error
+    console.error("Error calling currentWeatherForecastAPI:", error)
+
+  });
+}
+
+
+// 
+function viewCurrentWeather(city) {
+  // 
   // Get the current day using Day.js
   let today = dayjs();
+
   // split address at comma
-  const parts = City.split(",");
+  const parts = city.split(",");
+
   // extract city from string
   const extractedString = parts[0];
 
@@ -152,90 +183,34 @@ function currentWeather(City, lat,lon) {
   $('.current-card h5').text(cityDisplayandDate);
 
   // display current temperature, wind speed and humidity
-  // display 5-day forecast for location
+}
+
+
+function viewForescastWeather() {
+  // 
 }
 
 
 // find city latitude and longitude from city,state code,country code
-function currentWeatherForecastAPI(cityGeo) {
+function currentAndForecastWeatherAPI(lat, lon) {
 
   // configure recipe API method and parameters
+
+  // Required - Your unique API key
   let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
-  let limit = 'limit=1';
-  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
+
+  // Required -  	Latitude, decimal (-90; 90), Longitude, decimal (-180; 180)
+  let geoLocation = 'lat=' + lat + '&' + 'lon=' + lon;
+
+  // optional parameters: exclude, units and lang
+  let parameters = 'exclude=minutely,hourly,daily,alerts' + '&' + 'units=metric' + '&' + 'lang=eng';
+
+  // API call
+  const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?' + geoLocation + '&' + parameters + '&' + AUTH;
 
   // return a fetch promise that resolves with city latitude and longitude
   return new Promise((resolve, reject) => {
-
     fetchData(apiUrl)
-
-      .then(data => {
-
-        const latCity = data[0].lat;
-        const lonCity = data[0].lon;
-
-        //return latitude and longitude for city
-        resolve([latCity, lonCity]);
-
-      })
-
-      // catch error
-      .catch(error => {
-
-        // reject Promise if catch error
-        reject('Error fetching Geocoding:',error);
-
-    });
-  });
-}
-
-// find city latitude and longitude from city,state code,country code
-function fiveDayWeatherForecastAPI(cityGeo) {
-
-  // configure recipe API method and parameters
-  let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
-  let limit = 'limit=1';
-  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
-
-  // return a fetch promise that resolves with city latitude and longitude
-  return new Promise((resolve, reject) => {
-
-    fetchData(apiUrl)
-
-      .then(data => {
-
-        const latCity = data[0].lat;
-        const lonCity = data[0].lon;
-
-        //return latitude and longitude for city
-        resolve([latCity, lonCity]);
-
-      })
-
-      // catch error
-      .catch(error => {
-
-        // reject Promise if catch error
-        reject('Error fetching Geocoding:',error);
-
-    });
-  });
-}
-
-
-// find city temperature
-function cityGeocodingAPI(cityGeo) {
-
-  // configure recipe API method and parameters
-  let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
-  let limit = 'limit=1';
-  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
-
-  // return a fetch promise that resolves with city latitude and longitude
-  return new Promise((resolve, reject) => {
-
-    fetchData(apiUrl)
-
       .then(data => {
 
         // save latitude and longitude from data
@@ -246,13 +221,48 @@ function cityGeocodingAPI(cityGeo) {
         resolve([latCity, lonCity]);
 
       })
-
       // catch error
       .catch(error => {
 
         // reject Promise if catch error
         reject('Error fetching Geocoding:',error);
+    });
+  });
+}
 
+
+// find city temperature
+function cityGeocodingAPI(cityGeo) {
+
+  // configure recipe API method and parameters
+
+  // Required - Your unique API key
+  let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
+
+  // optional parameters: Number of the locations in the API response
+  let limit = 'limit=1';
+
+  // API call
+  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
+
+  // return a fetch promise that resolves with city latitude and longitude
+  return new Promise((resolve, reject) => {
+    fetchData(apiUrl)
+      .then(data => {
+
+        // save latitude and longitude from data
+        const latCity = data[0].lat;
+        const lonCity = data[0].lon;
+
+        //return latitude and longitude for city
+        resolve([latCity, lonCity]);
+
+      })
+      // catch error
+      .catch(error => {
+
+        // reject Promise if catch error
+        reject('Error fetching Geocoding:',error);
     });
   });
 }
@@ -260,7 +270,7 @@ function cityGeocodingAPI(cityGeo) {
 
 // here we pass the url we want to call from API and await until fetch responds
 async function fetchData(url) {
-
+  // await to return json fetch
   const fetcher = await fetch(url)
   const data = await fetcher.json();
 

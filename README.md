@@ -91,32 +91,10 @@ http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country
 
 Replace {city name},{state code},{country code} with the name of the city, state code, country code or location you want to get the weather data for, {limit} with the number of the locations in the API response and {apiKey} with your OpenWeather API key.
 
-b. Current Weather Forecast
+b. Current and 5-Day Weather Forecast
 
-To retrieve the current weather forecast for a location, you can make a GET request to the following API endpoint:
+To retrieve the current and 5-day weather forecast for a location, you can make a GET request to the following API endpoint:
 
-```
-https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-```
-
-Replace {lat}, {lon} with the latitude and longitude of the city or location you want to get the weather data for, {part} parameter so you can exclude some parts of the weather data from the API response, and {apiKey} with your OpenWeather API key.
-
-Here's an example using JavaScript and the Fetch API:
-
-```
-const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid={API key}`;
-
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Handle the current weather data here
-    console.log(data);
-  })
-  ```
-
-c. 5-Day Weather Forecast
-
-To retrieve a 5-day weather forecast for a location, you can make a GET request to the following API endpoint:
 ```
 api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 ```
@@ -135,6 +113,7 @@ fetch(apiUrl)
     console.log(data);
   })
 ```
+
 ### 4. Handling the API Response
 
 You'll need to parse the JSON data returned by the API and extract the relevant information to display it on your Weather Dashboard.
