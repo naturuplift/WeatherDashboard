@@ -4,21 +4,13 @@ body {
   font-size: 16px;
 }
 
-/* textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-} */
-
 /* set the title banner dashboard and forecast card color */
 .text-center {
   background-color: darkblue;
   color: white;
 }
 
+/* set side of current weather */
 .card-header {
   font-size: 36px;
 }
@@ -29,34 +21,11 @@ body {
 }
 
 /* set the 5-day forecast card color */
-.card {
+.card-1,
+.card-2,
+.card-3,
+.card-4,
+.card-5 {
   background-color: darkblue;
   color: white;
 }
-
-/* .current-card {
-
-} */
-
-/* .present {
-  background-color: #ff6961;
-  color: white;
-}
-
-.future {
-  background-color: #77dd77;
-  color: white;
-}
-
-.saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
-} */
-
-/* .saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-} */
