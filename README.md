@@ -51,7 +51,7 @@ Explore the inner workings of the Password Generator by checking out the [source
 
 ## Search Bar
 
-Enter the desired location in the search bar to retrieve weather information.
+Enter the desired location **City name, state code and country code** in the search bar to retrieve weather information.
 ![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/0ba529b1-ece0-4d2a-be46-0310aba1588a)
 Search-Bar
 
