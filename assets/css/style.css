@@ -6,7 +6,7 @@ body {
 
 /* set the title banner dashboard and forecast card color */
 .text-center {
-  background-color: darkblue;
+  background-color: rgb(87, 80, 117);
   color: white;
 }
 
@@ -21,11 +21,11 @@ body {
 }
 
 /* set the 5-day forecast card color */
+.card-0,
 .card-1,
 .card-2,
 .card-3,
-.card-4,
-.card-5 {
-  background-color: darkblue;
+.card-4 {
+  background-color: rgb(87, 80, 117);
   color: white;
 }
