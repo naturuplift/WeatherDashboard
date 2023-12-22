@@ -375,7 +375,7 @@ function cityGeocodingAPI(cityGeo) {
   let limit = 'limit=1';
 
   // API call
-  const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
+  const apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityGeo + '&' + AUTH + '&' + limit;
 
   // return a fetch promise that resolves with city latitude and longitude
   return new Promise((resolve, reject) => {
