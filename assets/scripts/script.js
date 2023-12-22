@@ -24,17 +24,6 @@ $('#searchButton').on('click', function () {
 
     // call weather dashboard to display weather forecast
     weatherDashboard(locationCity);
-
-    // After searching show weather forecast
-
-    // Show the current weather container
-    $('#currentWeather').show();
-
-    // Show the 5-day forecast container
-    $('#fiveDayForecast').show();
-
-    // Show the 5-day forecast cards
-    $('#fiveDayForecastCard').show();
   }
 });
 
@@ -142,6 +131,17 @@ function currentAndForecastWeather(city, lat, lon) {
     // check API data output for current weather location
     // console.log(legibleDate,weatherIcon,temp,windSpeed,humidity) // TODO comment when tested
 
+    // After searching show weather forecast
+
+    // Show the current weather container
+    $('#currentWeather').show();
+
+    // Show the 5-day forecast container
+    $('#fiveDayForecast').show();
+
+    // Show the 5-day forecast cards
+    $('#fiveDayForecastCard').show();
+    
     // Call function to display city current forecast
     viewCurrentWeather(city, legibleDate[0], weatherIcon[0], temp[0], windSpeed[0], humidity[0]);
 
