@@ -100,7 +100,7 @@ function updateSearchHistory(updateCity) {
     // Handle the click action for the city button
     weatherDashboard(cityName);
 
-    console.log("City selected from search history:", cityName) // TODO comment when tested
+    // console.log("City selected from search history:", cityName) // TODO comment when tested
   });
 }
 
@@ -114,7 +114,7 @@ function weatherDashboard(city) {
   .then(([lat, lon]) => {
 
     // check API lat, lon output for the city
-    console.log(city, lat, lon) // TODO comment when tested
+    // console.log(city, lat, lon) // TODO comment when tested
 
     // Call function to display city current forecast
     currentAndForecastWeather(city, lat, lon);
@@ -135,22 +135,25 @@ function weatherDashboard(city) {
 // call API for current and forecast weather
 function currentAndForecastWeather(city, lat, lon) {
 
-  // Call currentAndForecastWeatherAPI to current and forecast weather
+  // Call currentAndForecastWeatherAPI for current and forecast weather
   currentAndForecastWeatherAPI(lat,lon)
   .then(([legibleDate, weatherIcon, temp, windSpeed, humidity]) => {
 
-    // check API lat, lon output for the city
-    console.log(legibleDate,weatherIcon,temp,windSpeed,humidity) // TODO comment when tested
+    // check API data output for current weather location
+    // console.log(legibleDate,weatherIcon,temp,windSpeed,humidity) // TODO comment when tested
 
     // Call function to display city current forecast
     viewCurrentWeather(city, legibleDate[0], weatherIcon[0], temp[0], windSpeed[0], humidity[0]);
 
     // Remove the first element for current weather
-    const DateForecast = legibleDate.shift();
-    const weatherIconForecast = weatherIcon.shift();
-    const tempForecast = temp.shift();
-    const windSpeedForecast = windSpeed.shift();
-    const humidityDateForecast = humidity.shift();
+    const DateForecast = legibleDate.slice(1);
+    const weatherIconForecast = weatherIcon.slice(1);
+    const tempForecast = temp.slice(1);
+    const windSpeedForecast = windSpeed.slice(1);
+    const humidityDateForecast = humidity.slice(1);
+
+    // check API data output for forecast weather location
+    // console.log(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityDateForecast) // TODO comment when tested
 
     // Call function to display city 5-day forecast
     viewForescastWeather(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityDateForecast);
@@ -205,6 +208,9 @@ function viewCurrentWeather(city,legibleDate,weatherIcon,temp,windSpeed,humidity
 
 // show Date Weather-Icon, Temperature, Wind-Speed and Humidity in 5-day forecast weather
 function viewForescastWeather(legibleDate,weatherIcon,temp,windSpeed,humidity) {
+
+  // check API data input to function for forecast weather location
+  // console.log(legibleDate,weatherIcon,temp,windSpeed,humidity) // TODO comment when tested
 
   // loop to fill weather elements to 5-day cards
   for (let index = 0; index < temp.length; index++) {
@@ -268,7 +274,7 @@ function currentAndForecastWeatherAPI(lat, lon) {
     fetchData(apiUrl)
       .then(data => {
 
-        // define an array to jump values on data
+        // define an array to jump values on JSON data
         const array = [0, 8, 16, 24, 32, 39];
 
         // define arrays to store weather forecast variables
