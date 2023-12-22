@@ -24,7 +24,7 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/807d2a75-7e42-4cd8-8527-8ec6b54c9ab5)
 
-The weather Dasgboard display the following information:
+The weather Dashboard for a city display the following information:
 
 -   Current Weather
     - Date
