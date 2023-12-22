@@ -1,7 +1,3 @@
-// declare global variables
-let currentForecast;
-let futureForecast;
-
 
 // Add a listener for click event search for a location
 $('#searchButton').on('click', function () {
@@ -136,22 +132,28 @@ function weatherDashboard(city) {
 }
 
 
-// display current and forecast weather on dashboard
-// show City, Date, Weather-Icon, Temperature, Wind-Speed and Humidity in current weather
-// show Date Weather-Icon, Temperature, Wind-Speed and Humidity in forecast weather
-function currentAndForecastWeather(city, lat,lon) {
+// call API for current and forecast weather
+function currentAndForecastWeather(city, lat, lon) {
 
   // Call currentAndForecastWeatherAPI to current and forecast weather
   currentAndForecastWeatherAPI(lat,lon)
-  .then(([lat, lon]) => {
+  .then(([legibleDate, weatherIcon, temp, windSpeed, humidity]) => {
 
     // check API lat, lon output for the city
-    console.log(city, lat, lon) // TODO comment when tested
+    console.log(legibleDate,weatherIcon,temp,windSpeed,humidity) // TODO comment when tested
 
     // Call function to display city current forecast
-    viewCurrentWeather(city);
+    viewCurrentWeather(city, legibleDate[0], weatherIcon[0], temp[0], windSpeed[0], humidity[0]);
+
+    // Remove the first element for current weather
+    const DateForecast = legibleDate.shift();
+    const weatherIconForecast = weatherIcon.shift();
+    const tempForecast = temp.shift();
+    const windSpeedForecast = windSpeed.shift();
+    const humidityDateForecast = humidity.shift();
+
     // Call function to display city 5-day forecast
-    // display 5-day forecast for location
+    viewForescastWeather(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityDateForecast);
 
   })
   // catch error for Geo API call
@@ -164,37 +166,90 @@ function currentAndForecastWeather(city, lat,lon) {
 }
 
 
-// 
-function viewCurrentWeather(city) {
-  // 
-  // Get the current day using Day.js
-  let today = dayjs();
+// show City, Date, Weather-Icon, Temperature, Wind-Speed and Humidity in current weather
+function viewCurrentWeather(city,legibleDate,weatherIcon,temp,windSpeed,humidity) {
 
-  // split address at comma
-  const parts = city.split(",");
+  // split address, date at comma
+  const partCity = city.split(",");
+  const partDate = legibleDate.split(",");
 
-  // extract city from string
-  const extractedString = parts[0];
+  // extract city, date from string
+  const extractedStringCity = partCity[0];
+  const extractedStringDate = partDate[0];
 
   // display name of location, date and weather icon
-  cityDisplayandDate = `${extractedString} (` + today.format('D/MM/YYYY') + ')';
+  cityDisplayandDate = `${extractedStringCity} (${extractedStringDate}) ${weatherIcon}`;
 
-  // set display to html card for current weather
+  // set current weather display to html card
   $('.current-card h5').text(cityDisplayandDate);
 
-  // display current temperature, wind speed and humidity
+  // display current temperature
+  cityDisplayandTemp = `Temp: ${temp} °C`;
+
+  // set temperature display to html card
+  $('.current-card #temp').text(cityDisplayandTemp);
+  
+  // display wind speed
+  cityDisplayandWind = `Wind: ${windSpeed} m/s`;
+
+  // set wind speed display to html card
+  $('.current-card #wind').text(cityDisplayandWind);
+
+  // display humidity
+  cityDisplayandHumidity = `Humidity: ${humidity} %`;
+
+  // set humidity display to html card
+  $('.current-card #humidity').text(cityDisplayandHumidity);
 }
 
 
-function viewForescastWeather() {
-  // 
+// show Date Weather-Icon, Temperature, Wind-Speed and Humidity in 5-day forecast weather
+function viewForescastWeather(legibleDate,weatherIcon,temp,windSpeed,humidity) {
+
+  // loop to fill weather elements to 5-day cards
+  for (let index = 0; index < temp.length; index++) {
+    // set card html class index
+    let elementDate = `.card-${index} h5`;
+    let elementIcon = `.card-${index} #weather-icon`;
+    let elementTemp = `.card-${index} #temp`;
+    let elementWind = `.card-${index} #wind`;
+    let elementHumidity = `.card-${index} #humidity`;
+
+    // split date at comma
+    const partDate = legibleDate[index].split(",");
+
+    // extract date from string
+    const extractedStringDate = partDate[0];
+
+    // set date current weather display to html card
+    $(elementDate).text(extractedStringDate);
+
+    // set weather-icon to html card
+    $(elementIcon).text(weatherIcon[index])
+
+    // display current temperature
+    displayTemp = `Temp: ${temp[index]} °C`;
+
+    // set temperature display to html card
+    $(elementTemp).text(displayTemp);;
+    
+    // display wind speed
+    cityDisplayandWind = `Wind: ${windSpeed[index]} m/s`;
+
+    // set wind speed display to html card
+    $(elementWind).text(cityDisplayandWind);
+
+    // display humidity
+    cityDisplayandHumidity = `Humidity: ${humidity[index]} %`;
+
+    // set humidity display to html card
+    $(elementHumidity).text(cityDisplayandHumidity);
+  }  
 }
 
 
-// find city latitude and longitude from city,state code,country code
+// find weather data for city with latitude and longitude
 function currentAndForecastWeatherAPI(lat, lon) {
-
-  // configure recipe API method and parameters
 
   // Required - Your unique API key
   let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
@@ -213,19 +268,92 @@ function currentAndForecastWeatherAPI(lat, lon) {
     fetchData(apiUrl)
       .then(data => {
 
-        // save latitude and longitude from data
-        const latCity = data[0].lat;
-        const lonCity = data[0].lon;
+        // define an array to jump values on data
+        const array = [0, 8, 16, 24, 32, 39];
 
-        //return latitude and longitude for city
-        resolve([latCity, lonCity]);
+        // define arrays to store weather forecast variables
+        let legibleDates = [];
+        let descriptions = [];
+        let weatherIcons = [];
+        let temps = [];
+        let humiditys = [];
+        let windSpeeds = [];
+
+        // Weather icon mapping
+        const weatherIconsCondition = {
+          "clear sky": "☀️",
+          "few clouds": "⛅️",
+          "scattered clouds": "🌤️",
+          "broken clouds": "🌥️",
+          "overcast clouds": "☁️",
+          "light rain": "🌧️",
+          "moderate rain": "🌧️",
+          "heavy intensity rain": "🌧️",
+          "very heavy rain": "🌧️",
+          "extreme rain": "🌧️",
+          "freezing rain": "🌧️❄️",
+          "light snow": "🌨️❄️",
+          "moderate snow": "🌨️❄️",
+          "heavy snow": "🌨️❄️",
+          "sleet": "🌨️🌧️",
+          "shower rain": "🌦️",
+          "thunderstorm": "⛈️",
+          "mist": "🌫️",
+          "smoke": "🌫️",
+          "haze": "🌫️",
+          "dust": "🌫️",
+          "fog": "🌫️",
+          "sand": "🌫️",
+          "dust storm": "🌫️",
+          "tornado": "🌪️",
+          "unknown": "❓",
+        };
+
+        // loop to extract 
+        for (let index = 0; index < array.length; index++) {
+
+          // convert date to format i.e.: 12/22/2023, 5:00:00 AM
+          const legibleDate = new Date(data.list[array[index]].dt * 1000).toLocaleString();
+          legibleDates.push(legibleDate); // Add the value to the new array
+
+          // describes weather condition
+          const description = data.list[array[index]].weather[0].description;
+          descriptions.push(description); // Add the value to the new array
+
+          // weather condition icon
+          const weatherIcon = weatherIconsCondition[description] || "Unknown";
+          weatherIcons.push(weatherIcon); // Add the value to the new array
+
+          // weather temperature
+          const temp = data.list[array[index]].main.temp;
+          temps.push(temp); // Add the value to the new array
+
+          // weather wind speed
+          const windSpeed = data.list[array[index]].wind.speed;
+          windSpeeds.push(windSpeed); // Add the value to the new array
+
+          // weather humidity
+          const humidity = data.list[array[index]].main.humidity;
+          humiditys.push(humidity); // Add the value to the new array
+        }
+
+        // Printing the extracted data
+        // console.log("Legible Date:", legibleDates); // TODO comment when tested
+        // console.log("Description:", descriptions); // TODO comment when tested
+        // console.log("Weather Icon:", weatherIcons); // TODO comment when tested
+        // console.log("Temperature:", temps); // TODO comment when tested
+        // console.log("Wind Speed:", windSpeeds); // TODO comment when tested
+        // console.log("Humidity:", humiditys); // TODO comment when tested
+
+        //return current forecast
+        resolve([legibleDates,weatherIcons,temps,windSpeeds,humiditys]);
 
       })
       // catch error
       .catch(error => {
 
         // reject Promise if catch error
-        reject('Error fetching Geocoding:',error);
+        reject('Error fetching currentAndForecastWeatherAPI:',error);
     });
   });
 }
@@ -233,8 +361,6 @@ function currentAndForecastWeatherAPI(lat, lon) {
 
 // find city temperature
 function cityGeocodingAPI(cityGeo) {
-
-  // configure recipe API method and parameters
 
   // Required - Your unique API key
   let AUTH = 'appid=22c3eb9ede3421b2f412a925f97e46ae';
