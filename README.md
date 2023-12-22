@@ -22,6 +22,10 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ## Weather Information for a City
 
+![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/807d2a75-7e42-4cd8-8527-8ec6b54c9ab5)
+
+The weather Dashboard for a city display the following information:
+
 -   Current Weather
     - Date
     - Icon Representation of Weather Conditions
@@ -40,7 +44,6 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 The application keeps a record of your search history, allowing you to quickly revisit weather information for previously searched locations.
 
-
 ## Source Code
 Explore the inner workings of the Password Generator by checking out the [source code on GitHub][javascript-code]. Feel free to contribute and enhance the project!
 
@@ -49,19 +52,19 @@ Explore the inner workings of the Password Generator by checking out the [source
 ## Search Bar
 
 Enter the desired location in the search bar to retrieve weather information.
-
+![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/0ba529b1-ece0-4d2a-be46-0310aba1588a)
 Search-Bar
 
 ## Weather Information Display
 
-View real-time weather information, including temperature, humidity, wind speed, and UV index.
-
+View real-time weather information, including temperature, humidity, wind speed, and humidity.
+![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/18b8c118-4bde-4d5e-93f9-f4c9f1f54ab4)
 Weather-Information
 
 ## 5-Day Forecast
 
 Check the 5-day forecast to plan ahead.
-
+![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/10341e87-caca-41f6-84df-01df27217f69)
 5-Day-Forecast
 
 ## How to Use the OpenWeather API
