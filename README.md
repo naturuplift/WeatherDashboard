@@ -22,7 +22,8 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ## Weather Information for a City
 
-![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/9067f272-4af1-4924-b435-897cf3f3b984)
+![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/a95af1b0-45e5-4161-acb7-f5444170e522)
+
 
 The weather Dashboard for a city display the following information:
 
@@ -53,7 +54,7 @@ Explore the inner workings of the Password Generator by checking out the [source
 
 Enter the desired location **City name, state code and country code** in the search bar to retrieve weather information.
 
-![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/472f63d9-a70b-47c3-ac4c-c98b155adc8c)
+![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/897841ef-99fa-4f75-8a7e-319607d10045)
 
 
 Search-Bar
@@ -62,7 +63,7 @@ Search-Bar
 
 View real-time weather information, including temperature, humidity, wind speed, and humidity.
 
-![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/87350154-ae7b-4386-80d0-7323f29d5ce6)
+![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/542f7cc2-78df-4868-89fa-c8f3dd96c7f6)
 
 
 Weather-Information
