@@ -181,27 +181,33 @@ function viewCurrentWeather(city,legibleDate,weatherIcon,temp,windSpeed,humidity
   const extractedStringDate = partDate[0];
 
   // display name of location, date and weather icon
-  cityDisplayandDate = `${extractedStringCity} (${extractedStringDate}) ${weatherIcon}`;
+  cityDisplayandDate = `${extractedStringCity} (${extractedStringDate})`;
 
-  // set current weather display to html card
+  // set current weather display to html container
   $('.current-card h5').text(cityDisplayandDate);
 
+  // display current weather icon
+  cityDisplayandWeatherIcon = `${weatherIcon}`;
+
+  // set weather icon display to html container
+  $('.current-card #weather-icon').text(cityDisplayandWeatherIcon);
+  
   // display current temperature
   cityDisplayandTemp = `Temp: ${temp} °C`;
 
-  // set temperature display to html card
+  // set temperature display to html container
   $('.current-card #temp').text(cityDisplayandTemp);
   
-  // display wind speed
+  // display current wind speed
   cityDisplayandWind = `Wind: ${windSpeed} m/s`;
 
-  // set wind speed display to html card
+  // set wind speed display to html container
   $('.current-card #wind').text(cityDisplayandWind);
 
-  // display humidity
+  // display current humidity
   cityDisplayandHumidity = `Humidity: ${humidity} %`;
 
-  // set humidity display to html card
+  // set humidity display to html container
   $('.current-card #humidity').text(cityDisplayandHumidity);
 }
 
