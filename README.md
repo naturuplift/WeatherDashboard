@@ -28,6 +28,7 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 The weather Dashboard for a city display the following information:
 
 -   Current Weather
+    - City
     - Date
     - Icon Representation of Weather Conditions
     - Temperature
@@ -56,26 +57,17 @@ Enter the desired location **City name, state code and country code** in the sea
 
 ![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/897841ef-99fa-4f75-8a7e-319607d10045)
 
-
-Search-Bar
-
 ## Weather Information Display
 
-View real-time weather information, including temperature, humidity, wind speed, and humidity.
+View real-time weather information, including weather-icon conditions, temperature, wind speed, and humidity.
 
 ![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/542f7cc2-78df-4868-89fa-c8f3dd96c7f6)
-
-
-Weather-Information
 
 ## 5-Day Forecast
 
 Check the 5-day forecast to plan ahead.
 
 ![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/9e7b4968-6200-4d06-89dc-3e674a6f454c)
-
-
-5-Day-Forecast
 
 ## How to Use the OpenWeather API
 
