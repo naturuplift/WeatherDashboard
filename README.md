@@ -62,7 +62,7 @@ Search-Bar
 
 View real-time weather information, including temperature, humidity, wind speed, and humidity.
 
-![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/87350154-ae7b-4386-80d0-7323f29d5ce6)
+![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/a91d1131-f686-4a51-89d8-2be654ae9127)
 
 
 Weather-Information
