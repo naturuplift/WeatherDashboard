@@ -22,8 +22,7 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ## Weather Information for a City
 
-![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/327bcb4b-d802-41a4-8bcb-4f19a55c16fb)
-
+![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/9067f272-4af1-4924-b435-897cf3f3b984)
 
 The weather Dashboard for a city display the following information:
 
@@ -62,14 +61,18 @@ Search-Bar
 ## Weather Information Display
 
 View real-time weather information, including temperature, humidity, wind speed, and humidity.
-![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/18b8c118-4bde-4d5e-93f9-f4c9f1f54ab4)
+
+![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/87350154-ae7b-4386-80d0-7323f29d5ce6)
+
+
 Weather-Information
 
 ## 5-Day Forecast
 
 Check the 5-day forecast to plan ahead.
 
-![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/3b92ede5-46e8-4d02-be60-e29f42131a1a)
+![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/9e7b4968-6200-4d06-89dc-3e674a6f454c)
+
 
 5-Day-Forecast
 
