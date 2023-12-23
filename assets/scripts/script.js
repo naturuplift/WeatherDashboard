@@ -73,7 +73,7 @@ function updateSearchHistory(updateCity) {
   // created button into html and add city searched
   const cityCard = `
     <li class="list-group-item">
-      <button class="btn btn-secondary btn-block cityButton" data-location="${updateCity}">${extractedString}</button>
+      <button class="btn btn-secondary btn-block cityButton" style="background-color: rgb(87, 80, 117); color: white;" data-location="${updateCity}">${extractedString}</button>
     </li>
   `;
 
@@ -150,13 +150,13 @@ function currentAndForecastWeather(city, lat, lon) {
     const weatherIconForecast = weatherIcon.slice(1);
     const tempForecast = temp.slice(1);
     const windSpeedForecast = windSpeed.slice(1);
-    const humidityDateForecast = humidity.slice(1);
+    const humidityForecast = humidity.slice(1);
 
     // check API data output for forecast weather location
     // console.log(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityDateForecast) // TODO comment when tested
 
     // Call function to display city 5-day forecast
-    viewForescastWeather(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityDateForecast);
+    viewForescastWeather(DateForecast, weatherIconForecast, tempForecast, windSpeedForecast, humidityForecast);
 
   })
   // catch error for Geo API call
