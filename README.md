@@ -22,7 +22,7 @@ To use the weather dashboard, simply visit the [Weather Dashboard Page][weather-
 
 ## Weather Information for a City
 
-![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/807d2a75-7e42-4cd8-8527-8ec6b54c9ab5)
+![weather](https://github.com/naturuplift/weather-dashboard/assets/23546356/9067f272-4af1-4924-b435-897cf3f3b984)
 
 The weather Dashboard for a city display the following information:
 
@@ -52,19 +52,28 @@ Explore the inner workings of the Password Generator by checking out the [source
 ## Search Bar
 
 Enter the desired location **City name, state code and country code** in the search bar to retrieve weather information.
-![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/0ba529b1-ece0-4d2a-be46-0310aba1588a)
+
+![search](https://github.com/naturuplift/weather-dashboard/assets/23546356/472f63d9-a70b-47c3-ac4c-c98b155adc8c)
+
+
 Search-Bar
 
 ## Weather Information Display
 
 View real-time weather information, including temperature, humidity, wind speed, and humidity.
-![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/18b8c118-4bde-4d5e-93f9-f4c9f1f54ab4)
+
+![information](https://github.com/naturuplift/weather-dashboard/assets/23546356/87350154-ae7b-4386-80d0-7323f29d5ce6)
+
+
 Weather-Information
 
 ## 5-Day Forecast
 
 Check the 5-day forecast to plan ahead.
-![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/10341e87-caca-41f6-84df-01df27217f69)
+
+![5-day](https://github.com/naturuplift/weather-dashboard/assets/23546356/9e7b4968-6200-4d06-89dc-3e674a6f454c)
+
+
 5-Day-Forecast
 
 ## How to Use the OpenWeather API
