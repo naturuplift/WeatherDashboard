@@ -24,14 +24,8 @@ body {
 .btn.btn-primary {
   background-color: rgb(87, 80, 117);
   color: white;
-}
-
-/* set the search history button color
-#searchHistory.list-group {
-  background-color: rgb(87, 80, 117);
-  color: white;
   border: none;
-} */
+}
 
 /* set the 5-day forecast card color */
 .card-0,
