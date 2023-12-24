@@ -5,24 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Weather Dashboard - Current Weather and 5-Day Forecast">
     <!-- Upgrade insecure http request to https -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <!-- import Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Weather Dashboard</title>
+    <title>Weather Dashboard - Current Weather and 5-Day Forecast</title>
 </head>
 
 <body>
+    <header>
+        <h1 class="text-center">Weather Dashboard</h1>
+    </header>
     <!-- container for dashboard -->
     <div class="container mt-5">
-        <h1 class="text-center">Weather Dashboard</h1>
         <div class="row">
+
             <!-- Search Column on the Left -->
             <div class="col-md-3">
                 <h2>Search for City</h2>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter Location" id="locationInput">
+                    <input type="text" class="form-control" placeholder="Enter Location" id="locationInput" aria-label="Search for City">
                     
                 </div>
                 <div class="input-group mb-3">
@@ -30,13 +34,15 @@
                 </div>
                 <!-- Spacer line divider -->
                 <hr>
+
                 <!-- City search history -->
                 <h2>Search History</h2>
-                <ul id="searchHistory" class="list-group searchHistory">
+                <ul id="searchHistory" class="list-group searchHistory" aria-label="Search History">
                     <!-- Display search history here -->
                 </ul>
                 
             </div>
+
             <!-- Weather Information Column on the Right -->
             <div class="col-md-9">
                 <!-- Current Weather Information -->
@@ -52,12 +58,13 @@
                         <p class="card-text" id="humidity">Humidity: 0%</p>
                     </div>
                 </div>
+                
                 <!-- 5-Day Forecast -->
                 <h2 class="text-center" id="fiveDayForecast" style="display: none;">5-Day Forecast</h2>
 
                 <div class="row" id="fiveDayForecastCard" style="display: none;">
                     <!-- Day 1 -->
-                    <div class="col">
+                    <div class="col-lg col-md-3 col-sm-4 col-6">
                         <div class="card-0">
                             <div class="card-body">
                                 <h5 class="card-title">Day 1</h5>
@@ -69,7 +76,7 @@
                         </div>
                     </div>
                     <!-- Day 2 -->
-                    <div class="col">
+                    <div class="col-lg col-md-3 col-sm-4 col-6">
                         <div class="card-1">
                             <div class="card-body">
                                 <h5 class="card-title">Day 2</h5>
@@ -81,7 +88,7 @@
                         </div>
                     </div>
                     <!-- Day 3 -->
-                    <div class="col">
+                    <div class="col-lg col-md-3 col-sm-4 col-6">
                         <div class="card-2">
                             <div class="card-body">
                                 <h5 class="card-title">Day 3</h5>
@@ -93,7 +100,7 @@
                         </div>
                     </div>
                     <!-- Day 4 -->
-                    <div class="col">
+                    <div class="col-lg col-md-3 col-sm-4 col-6">
                         <div class="card-3">
                             <div class="card-body">
                                 <h5 class="card-title">Day 4</h5>
@@ -105,7 +112,7 @@
                         </div>
                     </div>
                     <!-- Day 5 -->
-                    <div class="col">
+                    <div class="col-lg col-md-3 col-sm-4 col-6">
                         <div class="card-4">
                             <div class="card-body">
                                 <h5 class="card-title">Day 5</h5>
