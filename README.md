@@ -136,7 +136,7 @@ Feel free to reach out, contribute, or provide feedback to make the Password Gen
 
 This project is licensed under the MIT License. See the [LICENSE][MIT] file for details.
 
-[weather-dash]: <https://naturuplift.github.io/weather-dashboard/>
+[weather-dash]: <https://naturuplift.github.io/WeatherDashboard/>
 [javascript-code]: <https://github.com/naturuplift/weather-dashboard/blob/main/assets/scripts/script.js>
 [state-flow]: <https://github.com/naturuplift/weather-dashboard/blob/main/assets/img/Weather%20Dashboard%20State%20Diagram%20v1.png>
 [MIT]: <https://github.com/naturuplift/weather-dashboard/blob/main/LICENSE>
